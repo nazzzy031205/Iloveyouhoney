@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You Honey</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:black;
+    height:100vh;
+    font-family:Arial, sans-serif;
+}
+
+.container{
+    position:relative;
+    width:100%;
+    height:100vh;
+}
+
+.text{
+    position:absolute;
+    color:white;
+    font-size:25px;
+    white-space:nowrap;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #7df9ff,
+        0 0 40px #7df9ff;
+    animation:float 10s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(110vh);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:55px;
+    text-align:center;
+    text-shadow:
+        0 0 10px white,
+        0 0 20px cyan,
+        0 0 40px cyan;
+    z-index:999;
+}
+
+.heart{
+    color:red;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    50%{
+        transform:scale(1.2);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+    <div class="center">
+        I LOVE YOU HONEY
+        <div class="heart">❤️</div>
+    </div>
+</div>
+
+<script>
+const container = document.getElementById("container");
+
+function createText(){
+    const text = document.createElement("div");
+    text.className = "text";
+
+    text.innerHTML = "I love you honey ♡";
+
+    text.style.left = Math.random()*100 + "vw";
+    text.style.fontSize = (15 + Math.random()*35) + "px";
+    text.style.animationDuration = (5 + Math.random()*10) + "s";
+
+    container.appendChild(text);
+
+    setTimeout(()=>{
+        text.remove();
+    },15000);
+}
+
+setInterval(createText,200);
+</script>
+
+</body>
+  </html>
